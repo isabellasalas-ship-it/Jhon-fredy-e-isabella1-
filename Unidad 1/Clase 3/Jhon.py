@@ -1,6 +1,7 @@
 from tkinter import Frame, Tk
 from tkinter.messagebox import  askyesno
 
+"ventana principal"
 ventana = Tk()
 ventana.title("isabella y jhon")
 
