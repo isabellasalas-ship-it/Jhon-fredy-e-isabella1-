@@ -11,7 +11,7 @@ labelValidacionNombre = tk.Label(ventanaPrincipal, text="")
 
 
 def validarLetras(valor):
-    patron = re._compiler("^[A-Za-zñÑ ]*$")
+    patron = re._compile("^[A-Za-zñÑ ]*$")
     resultado = patron.match(valor.get()) is not None
     if not resultado:
         return False
