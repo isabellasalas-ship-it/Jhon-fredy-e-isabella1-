@@ -5,4 +5,6 @@ class Zapato():
         
         self.ventana_principal = ventana_principal
         self.marca = tk.StringVar(ventana_principal)
-        
+        self.modelo = tk.StringVar(ventana_principal)
+        self.talla = tk.StringVar(ventana_principal)
+        self.fecha_de_creacion = tk.StringVar(ventana_principal)
