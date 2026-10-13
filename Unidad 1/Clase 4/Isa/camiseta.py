@@ -7,4 +7,6 @@ class Camiseta:
         self.color = tk.StringVar(ventana_Principal)
         self.talla= tk.StringVar(ventana_Principal)
         self.fecha_creacion= tk.StringVar(ventana_Principal)
-        self.material= tk.StringVar(ventana_Principal)
+        self.material = tk.StringVar(ventana_Principal, value="")# este es diferente porque es un radiobutton y no un entry, por eso se le asigna un valor inicial vacio
+
+ 
