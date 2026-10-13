@@ -6,12 +6,6 @@ from tkcalendar import DateEntry
 import re
 
 
-def validar_color(valor):
-    patron = re.compile("^[a-zA-Z]+$")
-    resultado = patron.match(valor.get()) is not None
-    if not resultado:
-        return False
-    return True
 
 class Interfaz():
     def __init__(self):
@@ -40,7 +34,7 @@ class Interfaz():
 
     def mostrar_Interfaz(self):
             clase=Camiseta(self.ventana_principal)
-            print("Material inicial:", repr(clase.material.get()))# prueba
+            
 
             label_color = tk.Label(self.ventana_principal, text="Color de la camiseta",bg="lightblue")# ESTO TAMBIEN FUE OPCIONAL, SE VEIA TODO MUY JUNTO
             entry_color = tk.Entry(self.ventana_principal, textvariable=clase.color)
