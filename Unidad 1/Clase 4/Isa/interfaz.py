@@ -7,6 +7,7 @@ import re
 
 
 
+
 class Interfaz():
     def __init__(self):
         self.ventana_principal = tk.Tk()
@@ -21,7 +22,7 @@ class Interfaz():
             messagebox.showerror("Error", "Seleccione una talla válida: S, M, L o XL")
             return
 
-        if not material:
+        if material not in ["Algodón", "Poliéster", "Lana"]:
             messagebox.showerror("Error", "Seleccione el  material de la camiseta")
             return
 
@@ -57,23 +58,12 @@ class Interfaz():
             combo_talla = ttk.Combobox(
             self.ventana_principal,
             textvariable=clase.talla,
-            values=["S", "M", "L", "XL"]
+            values=["S", "M", "L", "XL"],
+            state="readonly"
             )
 
-            label_error_talla = tk.Label(self.ventana_principal, text="", fg="red",bg="lightblue")
-
-            def validar_talla(texto):
-                tallas = ["S", "M", "L", "XL"]
-                for t in tallas:
-                    if t.startswith(texto.upper()):
-                        label_error_talla.config(text="")
-                        return True
-                label_error_talla.config(text="Talla no válida. Use S, M, L o XL",bg="lightblue")
-                return False
-
-            validacion_talla = self.ventana_principal.register(validar_talla)
-            combo_talla.config(validate="key", validatecommand=(validacion_talla, "%P"))
-
+           
+        
 
             label_fecha = tk.Label(
             self.ventana_principal,
@@ -82,7 +72,8 @@ class Interfaz():
             )
             fecha = DateEntry(
             self.ventana_principal,
-            textvariable=clase.fecha_creacion
+            textvariable=clase.fecha_creacion,
+            date_pattern="dd/mm/yyyy"
             )
 
             label_material = tk.Label(
@@ -131,7 +122,7 @@ class Interfaz():
 
             label_talla.pack()
             combo_talla.pack()
-            label_error_talla.pack()
+            
 
             label_fecha.pack()
             fecha.pack()   
