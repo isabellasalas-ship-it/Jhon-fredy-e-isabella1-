@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from academico import views
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path("asignaturas/", views.asignatura_lista),
+    path("asignaturas/<int:pk>/", views.asignatura_detalle),
+    ]
