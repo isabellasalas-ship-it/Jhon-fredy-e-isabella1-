@@ -1,0 +1,1 @@
+from .camiseta_serializer import CamisetaSerializer
