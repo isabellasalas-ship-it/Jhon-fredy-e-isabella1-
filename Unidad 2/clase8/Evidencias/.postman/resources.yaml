@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 077392dc-7f05-4980-87e3-fc2c0d180e26
+
+localResources:
+  collections:
+    - ../Camiseta.postman_collection.json

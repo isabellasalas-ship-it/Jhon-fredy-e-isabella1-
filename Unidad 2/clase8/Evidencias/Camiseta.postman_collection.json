@@ -1,0 +1,156 @@
+{
+  "info": {
+    "_postman_id": "ca2aca23-c669-4de7-a820-3461040c41df",
+    "name": "Camiseta",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59125599",
+    "_collection_link": "https://go.postman.co/collection/59125599-ca2aca23-c669-4de7-a820-3461040c41df?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Crear",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "   {\r\n     \"color\": \"Azul\",\r\n     \"talla\": 38,\r\n     \"material\": \"Algodón\",\r\n     \"fecha_creacion\": \"2025-03-15\"\r\n   }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/camisetas/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "camisetas",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listar",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/camisetas/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "camisetas",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/camisetas/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "camisetas",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Reemplazar",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "   {\r\n     \"color\": \"Rojo\",\r\n     \"talla\": 40,\r\n     \"material\": \"Poliéster\",\r\n     \"fecha_creacion\": \"2025-04-20\"\r\n   }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/camisetas/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "camisetas",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modificar",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "   {\r\n     \"color\": \"Verde\"\r\n   }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/camisetas/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "camisetas",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/camisetas/1/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "camisetas",
+            "1",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    }
+  ]
+}

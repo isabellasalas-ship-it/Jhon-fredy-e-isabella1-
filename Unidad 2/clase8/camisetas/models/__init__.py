@@ -1,0 +1,1 @@
+from .camiseta import Camiseta
