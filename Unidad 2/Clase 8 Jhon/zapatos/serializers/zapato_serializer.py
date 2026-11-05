@@ -2,10 +2,10 @@ from decimal import Decimal
 
 from rest_framework import serializers
 
-from .models import Asignatura, Clase
+from zapatos.models import Zapato
 
 
-class ClaseSerializer(serializers.ModelSerializer):
+"""class ClaseSerializer(serializers.ModelSerializer):
     # Campo extra, solo lectura, tomado de la relación
     asignatura_nombre = serializers.CharField(
         source="asignatura.nombre", read_only=True
@@ -40,23 +40,23 @@ class ClaseSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 {"fecha": "La clase no puede ser anterior al inicio de la asignatura."}
             )
-        return data
+        return data"""
 
 
-class AsignaturaSerializer(serializers.ModelSerializer):
+class ZapatoSerializer(serializers.ModelSerializer):
     # Serializer anidado: muestra las clases dentro de la asignatura
-    clases = ClaseSerializer(many=True, read_only=True)
+    """zapatos = ClaseSerializer(many=True, read_only=True)
     # Campo calculado
-    total_clases = serializers.SerializerMethodField()
+    total_clases = serializers.SerializerMethodField()"""
 
     class Meta:
-        model = Asignatura
+        model = Zapato
         fields = [
-            "id", "nombre", "creditos", "activa",
-            "fecha_inicio", "total_clases", "clases",
+            "id", "marca", "modelo", "talla",
+            "fecha_creacion",
         ]
 
-    def get_total_clases(self, obj):
+    """def get_total_clases(self, obj):
         return obj.clases.count()
 
     def validate_creditos(self, value):
@@ -64,4 +64,4 @@ class AsignaturaSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 "Los créditos deben estar entre 1 y 10."
             )
-        return value
+        return value"""

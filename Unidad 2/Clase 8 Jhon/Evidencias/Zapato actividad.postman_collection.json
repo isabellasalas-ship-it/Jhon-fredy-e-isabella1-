@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "348ef6af-92db-42dd-986f-a21a44c3b89e",
+		"name": "Zapato actividad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "59188575",
+		"_collection_link": "https://jhon-mazo-1464253.postman.co/workspace/JHON-FREDY-GONZALEZ-MAZO's-Work~d803a18c-e677-419d-875d-dfc7999f0280/collection/59188575-348ef6af-92db-42dd-986f-a21a44c3b89e?action=share&source=collection_link&creator=59188575"
+	},
+	"item": [
+		{
+			"name": "traer todos los zapatos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/zapatos/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"zapatos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "traer un zapato",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}zapatos/1/",
+					"host": [
+						"{{base_url}}zapatos"
+					],
+					"path": [
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "guardar un zapato",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"marca\": \"Nike\",\n    \"modelo\": \"Air Force 1\",\n    \"talla\": 38,\n    \"fecha_creacion\": \"2025-07-17\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/zapatos/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"zapatos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editar un zapato",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"marca\": \"Nike\",\n    \"modelo\": \"Air Pegasus 42\",\n    \"talla\": 37,\n    \"fecha_creacion\": \"2026-10-04\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}zapatos/1/",
+					"host": [
+						"{{base_url}}zapatos"
+					],
+					"path": [
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar un zapato",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/zapatos/1/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"zapatos",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editar un valor de un zapato",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"talla\": 37}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/zapatos/2/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"zapatos",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		}
+	]
+}
