@@ -1,0 +1,12 @@
+import tkinter as tk
+
+class Camiseta:
+
+    def __init__(self, ventana_Principal):
+        self.ventana_Principal = ventana_Principal
+        self.color = tk.StringVar(ventana_Principal)
+        self.talla= tk.StringVar(ventana_Principal)
+        self.fecha_creacion= tk.StringVar(ventana_Principal)
+        self.material = tk.StringVar(ventana_Principal, value="ninguno")# este es diferente porque es un radiobutton y no un entry, por eso se le asigna un valor inicial vacio
+
+ 
