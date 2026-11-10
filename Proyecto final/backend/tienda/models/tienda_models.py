@@ -10,11 +10,13 @@ class Producto(models.Model):
         decimal_places=2,
         validators=[MinValueValidator(Decimal("0.01"))],
     )
+    
     stock = models.PositiveIntegerField(default=0)
     activo = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nombre
+    
 class Venta(models.Model):
     METODOS_PAGO = [
         ("EFECTIVO", "Efectivo"),
