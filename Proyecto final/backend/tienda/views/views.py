@@ -1,3 +1,4 @@
+from django.db import transaction
 from django.db.models import ProtectedError
 from rest_framework import viewsets, status
 from rest_framework.response import Response
@@ -31,6 +32,15 @@ class VentaViewSet(viewsets.ModelViewSet):
     queryset = Venta.objects.all().order_by("-fecha")
     serializer_class = VentaSerializer
 
+    @transaction.atomic
+    def perform_destroy(self, instance):
+        # Al borrar la venta, las unidades vuelven a la bodega
+        for detalle in instance.detalleventa_set.select_related("producto"):
+            producto = detalle.producto
+            producto.stock += detalle.cantidad
+            producto.save()
+        instance.delete()
+
 
 class DetalleVentaViewSet(viewsets.ModelViewSet):
     serializer_class = DetalleVentaSerializer
@@ -42,4 +52,10 @@ class DetalleVentaViewSet(viewsets.ModelViewSet):
             consulta = consulta.filter(venta_id=venta_id)
         return consulta
 
-# Create your views here.
+    @transaction.atomic
+    def perform_destroy(self, instance):
+        # Al quitar un producto de la venta, vuelve a la bodega
+        producto = instance.producto
+        producto.stock += instance.cantidad
+        producto.save()
+        instance.delete()
