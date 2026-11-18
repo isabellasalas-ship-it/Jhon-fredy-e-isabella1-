@@ -2,10 +2,11 @@ from django.db import models
 
 
 class Camiseta(models.Model):
-    color = models.CharField(max_length=100, unique=True)   # texto
-    talla = models.PositiveSmallIntegerField()            # entero
+    color = models.CharField(max_length=100)  # texto
+    talla = models.CharField(max_length=2)   # texto
     material = models.CharField(max_length=100)            # texto
     fecha_creacion = models.DateField()                        # fecha
+    marca= models.CharField(max_length=30)  # texto
 
     class Meta:
         ordering = ["color"]
