@@ -10,8 +10,12 @@ COLOR_ALERTA = "#ff9aa2"
 COLOR_NARANJA = "#ffd8a8"
 COLOR_GRIS = "#b0b0c0"
 COLOR_BLANCO = "#ffffff"
+COLOR_CAFE = "#6f4e37"
+COLOR_CREMA = "#fff4e6"
+COLOR_FOCO = "#8f72e0"
 
-FUENTE_TITULO = ("Comic Sans MS", 20, "bold")
+FUENTE_TITULO = ("Comic Sans MS", 24, "bold")
 FUENTE_NORMAL = ("Segoe UI", 11)
 FUENTE_NEGRITA = ("Segoe UI", 11, "bold")
 FUENTE_PEQUENA = ("Segoe UI", 9)
+PAUSA_ACCION = 0.9

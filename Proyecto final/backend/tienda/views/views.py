@@ -3,8 +3,8 @@ from django.db.models import ProtectedError
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from .models import Producto, Venta, DetalleVenta
-from .serializers import (
+from ..models import Producto, Venta, DetalleVenta
+from ..serializers import (
     ProductoSerializer,
     VentaSerializer,
     DetalleVentaSerializer,
