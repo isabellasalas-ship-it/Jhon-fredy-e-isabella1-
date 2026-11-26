@@ -1,78 +1,59 @@
 import tkinter as tk
 import tkinter.messagebox as messagebox
 from tkinter import ttk
-from tkcalendar import DateEntry
+from controladores.comunicacion import Comunicacion
+from vistas.vista_camisetas import VistaCamisetas
 
-from controladores.validaciones import Validaciones
-from modelos.camiseta import Camiseta
-from controladores.comunicacion import Comunicacion, ErrorComunicacion
-
-ROJO = "red"
-FONDO = "lightblue"
+FONDO = "#f3e5f5"
+BOTON_ROSA = "#f48fb1"
+BOTON_HOVER = "#f06292"
 
 
 class Interfaz():
 
     def __init__(self):
         self.ventana_principal = tk.Tk()
-        self.ventana_principal.configure(bg=FONDO)
-        self.camiseta = Camiseta(self.ventana_principal)
+        self.ventana_principal.configure(bg="#d6eaf8")# PROFE ESTO FUE OPCIONAL, SOLO PARA DARLE COLOR A LA VENTANA PRINCIPAL
         self.comunicacion = Comunicacion()
-        self.labels_error = []
+       
 
-    def al_soltar_tecla(self, validacion, label_error):
-        label_error.config(text=validacion() or "")
-
-    def accion_guardar(self):
-        errores = Validaciones.validarCamiseta(self.camiseta)
-
-        if errores:
-            messagebox.showwarning("Revise los datos", "\n".join(errores))
-            return
-
-        try:
-            creada = self.comunicacion.crear(
-                "camisetas", self.camiseta.a_diccionario()
-            )
-        except ErrorComunicacion as error:
-            messagebox.showerror("No se pudo guardar", str(error))
-            return
-
-        messagebox.showinfo(
-            "Guardado",
-            "Camiseta " + creada["color"] +
-            " guardada con el id " + str(creada["id"]) + "."
-        )
-        self.accion_limpiar()
-
-    def accion_limpiar(self):
-        self.camiseta.limpiar()
-        for label_error in self.labels_error:
-            label_error.config(text="")
-
+    def al_cambiar_pestana(self, evento):
+        pestana = self.pestanas.nametowidget(self.pestanas.select())
+        pestana.refrescar()
+    
     def al_cerrar(self):
-        if messagebox.askyesno("Salir", "¿Seguro que quieres cerrar la aplicación?"):
+        if messagebox.askyesno('Salir', '¿Seguro que quieres cerrar la aplicación?'):
             self.ventana_principal.destroy()
 
-    def crear_campo(self, texto, variable, validacion):
-        label = tk.Label(self.ventana_principal, text=texto, bg=FONDO)
-        entry = tk.Entry(self.ventana_principal, textvariable=variable)
-        label_error = tk.Label(self.ventana_principal, text="", fg=ROJO, bg=FONDO)
-        entry.bind(
-            "<KeyRelease>",
-            lambda evento: self.al_soltar_tecla(validacion, label_error)
-        )
 
-        label.pack()
-        entry.pack()
-        label_error.pack()
-        self.labels_error.append(label_error)
 
     def mostrar_interfaz(self):
-        camiseta = self.camiseta
+    
         self.ventana_principal.title("Camisetas")
-        self.ventana_principal.geometry("300x500")
+        self.ventana_principal.geometry("900x600")
+        self.ventana_principal.minsize(820, 520)
 
+        estilo = ttk.Style()
+        estilo.theme_use("clam")
+        estilo.configure("TFrame", background=FONDO)
+        estilo.configure("TLabelframe", background=FONDO)
+        estilo.configure("TLabelframe.Label", background=FONDO)
+        estilo.configure("TLabel", background=FONDO)
+        estilo.configure("TRadiobutton", background=FONDO)
+        estilo.configure("TNotebook", background=FONDO)
+        estilo.configure("TNotebook.Tab", background="#e1bee7")  
+        estilo.map("TNotebook.Tab", background=[("selected", FONDO)])
+        estilo.configure("TButton", background=BOTON_ROSA, foreground="#2c2c2c")
+        estilo.map("TButton", background=[("active", BOTON_HOVER), ("disabled", "#e0e0e0")])
+
+
+        self.pestanas = ttk.Notebook(self.ventana_principal)
+        self.pestanas.add(VistaCamisetas(self.pestanas, self.comunicacion), text='Camisetas')
+        self.pestanas.pack(fill='both', expand=True)
+        self.pestanas.bind('<<NotebookTabChanged>>', self.al_cambiar_pestana)
+
+        
+        """
         self.crear_campo(
             "Color de la camiseta", camiseta.color,
             lambda: Validaciones.validarLetras(camiseta.color.get(), "Color", 30),
@@ -127,6 +108,7 @@ class Interfaz():
 
         boton_guardar.pack(pady=5)
         boton_limpiar.pack()
+        """
 
         self.ventana_principal.protocol("WM_DELETE_WINDOW", self.al_cerrar)
         self.ventana_principal.mainloop()

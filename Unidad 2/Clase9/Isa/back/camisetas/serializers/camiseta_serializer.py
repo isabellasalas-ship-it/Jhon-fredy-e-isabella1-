@@ -15,4 +15,4 @@ class CamisetaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Camiseta
-        fields = ["id", "color", "talla", "material", "fecha_creacion", "marca"]
+        fields = ["id", "color", "talla", "material", "fecha_creacion", "marca", "activa"]

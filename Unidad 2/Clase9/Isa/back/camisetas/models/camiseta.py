@@ -7,7 +7,8 @@ class Camiseta(models.Model):
     material = models.CharField(max_length=100)            # texto
     fecha_creacion = models.DateField()                        # fecha
     marca= models.CharField(max_length=30)  # texto
-
+    activa = models.BooleanField(default=True)
+    
     class Meta:
         ordering = ["color"]
     def __str__(self):
